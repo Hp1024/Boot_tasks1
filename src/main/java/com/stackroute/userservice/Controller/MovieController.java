@@ -1,4 +1,6 @@
 package com.stackroute.userservice.Controller;
+import com.stackroute.userservice.Exceptions.MovieAlreadyExistsException;
+import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Service.MovieService;
 import io.swagger.annotations.Api;
@@ -31,46 +33,24 @@ public class MovieController {
 
     @ApiOperation(value = "Add a movie")
     @PostMapping("movie")
-    public ResponseEntity<?> saveMovieController(@RequestBody Movie movie){
-
-        try {
+    public ResponseEntity<?> saveMovieController(@RequestBody Movie movie)throws MovieAlreadyExistsException  {
             return new ResponseEntity<Boolean>(movieService.saveMovie(movie),HttpStatus.ACCEPTED);
-
-        }
-        catch (Exception ex){
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-        }
     }
 
     @ApiOperation(value = "Update a movie")
     @PutMapping("movie")
     public ResponseEntity<?> updateMovieController(@RequestBody Movie movie){
-        try {
             return new ResponseEntity<Boolean>(movieService.updateMovie(movie),HttpStatus.ACCEPTED);
-        }
-        catch (Exception ex){
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-        }
     }
 
     @ApiOperation(value = "Delete a movie")
     @DeleteMapping("movie/{id}")
-    public ResponseEntity<?> deleteMovieController(@PathVariable("id") long id){
-        try {
+    public ResponseEntity<?> deleteMovieController(@PathVariable("id") long id) throws MovieNotFoundException {
             return new ResponseEntity<Boolean>(movieService.deleteMovie(id),HttpStatus.ACCEPTED);
-        }
-        catch (Exception ex){
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-        }
     }
     @ApiOperation(value = "Get a movie by title")
     @GetMapping("movie/{title}")
-    public ResponseEntity<?> searchByNameController(@PathVariable("title") String string){
-        try {
+    public ResponseEntity<?> searchByNameController(@PathVariable("title") String string) throws MovieNotFoundException{
             return new ResponseEntity<List<Movie>>(movieService.findByName(string),HttpStatus.OK);
-        }
-        catch (Exception ex){
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
-        }
     }
 }
