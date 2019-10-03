@@ -1,4 +1,4 @@
-package com.stackroute.userservice.config;
+package com.stackroute.userservice.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

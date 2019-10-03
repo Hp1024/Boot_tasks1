@@ -1,5 +1,7 @@
 package com.stackroute.userservice.Service;
 
+import com.stackroute.userservice.Exceptions.MovieAlreadyExistsException;
+import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,15 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public boolean saveMovie(Movie movie) {
-            movieRepository.save(movie);
+    public boolean saveMovie(Movie movie) throws MovieAlreadyExistsException {
+        if(movieRepository.existsById(movie.getId())){
+            throw new MovieAlreadyExistsException("Movie with same id already exists");
+        }
+        Movie result=movieRepository.save(movie);
+        if(result==null){
+            throw new MovieAlreadyExistsException("Movie with same id already exists");
+
+        }
             return true;
     }
 
@@ -26,10 +35,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public boolean deleteMovie(long id) {
+    public boolean deleteMovie(long id) throws MovieNotFoundException {
+        if(movieRepository.existsById(id)){
+            movieRepository.deleteById(id);
+            return true;
+        }
+        else throw new MovieNotFoundException("cannot find movie of specified id");
 
-        movieRepository.deleteById(id);
-        return true;
     }
 
     @Override
@@ -39,9 +51,12 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> findByName(String string) {
-        System.out.println(movieRepository.findByTitle(string));
-        return movieRepository.findByTitle(string);
+    public List<Movie> findByName(String string) throws MovieNotFoundException{
+         List<Movie> result=movieRepository.findByTitle(string);
+         if(result.isEmpty()){
+             throw new MovieNotFoundException("cannot find movie of specified title");
+         }
+         else return result;
 
     }
 
