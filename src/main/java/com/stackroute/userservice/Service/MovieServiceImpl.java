@@ -37,4 +37,13 @@ public class MovieServiceImpl implements MovieService {
             movieRepository.save(movie);
             return true;
     }
+
+    @Override
+    public List<Movie> findByName(String string) {
+        System.out.println(movieRepository.findByTitle(string));
+        return movieRepository.findByTitle(string);
+
+    }
+
+
 }

@@ -8,4 +8,5 @@ public interface MovieService {
     public List<Movie> getAllMovies();
     public boolean deleteMovie(long id);
     public boolean updateMovie(Movie movie);
+    public List<Movie> findByName(String string);
 }

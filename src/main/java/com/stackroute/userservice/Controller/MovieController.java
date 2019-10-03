@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -45,6 +46,17 @@ public class MovieController {
     public ResponseEntity<?> deleteMovieController(@RequestBody long id){
         try {
             return new ResponseEntity<Boolean>(movieService.deleteMovie(id),HttpStatus.ACCEPTED);
+        }
+        catch (Exception ex){
+            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+        }
+    }
+    @GetMapping("movie/title")
+    public ResponseEntity<?> searchByNameController(@RequestBody String string){
+        try {
+            System.out.println(string);
+            System.out.println("in controller");
+            return new ResponseEntity<List<Movie>>(movieService.findByName(string),HttpStatus.OK);
         }
         catch (Exception ex){
             return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
