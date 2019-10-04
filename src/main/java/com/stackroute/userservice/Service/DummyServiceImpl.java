@@ -4,13 +4,18 @@ import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
-public class TrackDummyServiceImpl implements MovieService {
+@Profile("test")
+public class DummyServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
-    public TrackDummyServiceImpl(MovieRepository movieRepository) {
+    public DummyServiceImpl(MovieRepository movieRepository) {
+        System.out.println("using DummyServiceImpl");
         this.movieRepository = movieRepository;
     }
 
@@ -29,7 +34,6 @@ public class TrackDummyServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getAllMovies() {
-        System.out.println("using dummy service implementation");
         return movieRepository.findAll();
     }
 

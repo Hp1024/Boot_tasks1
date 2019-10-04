@@ -22,7 +22,6 @@ public class MovieController {
     @Inject
     private Environment environment;
     @Autowired
-    @Qualifier("trackDummyServiceImpl")
     private MovieService movieService;
     private Movie movie1;
     private Movie movie2;
