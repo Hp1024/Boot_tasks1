@@ -4,17 +4,17 @@ import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Primary
 @Service
+@Primary
 public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
     public MovieServiceImpl(MovieRepository movieRepository) {
-        System.out.println("using original service implementation");
         this.movieRepository = movieRepository;
     }
 
@@ -33,6 +33,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getAllMovies() {
+        System.out.println("using original service implementation");
         return movieRepository.findAll();
     }
 

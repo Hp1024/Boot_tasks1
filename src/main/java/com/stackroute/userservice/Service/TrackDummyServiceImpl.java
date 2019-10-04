@@ -6,13 +6,11 @@ import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
 @Service
 public class TrackDummyServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
     public TrackDummyServiceImpl(MovieRepository movieRepository) {
-        System.out.println("using dummy service implementation");
         this.movieRepository = movieRepository;
     }
 
@@ -31,6 +29,7 @@ public class TrackDummyServiceImpl implements MovieService {
 
     @Override
     public List<Movie> getAllMovies() {
+        System.out.println("using dummy service implementation");
         return movieRepository.findAll();
     }
 

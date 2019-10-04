@@ -6,6 +6,7 @@ import com.stackroute.userservice.Service.MovieService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -20,14 +21,15 @@ import java.util.List;
 public class MovieController {
     @Inject
     private Environment environment;
+    @Autowired
+    @Qualifier("trackDummyServiceImpl")
     private MovieService movieService;
     private Movie movie1;
     private Movie movie2;
     @Value("${deleteId}")
     private long deleteId;
     @Autowired
-    public MovieController(MovieService movieService,Movie movie1,Movie movie2) {
-        this.movieService = movieService;
+    public MovieController(Movie movie1,Movie movie2) {
         this.movie1=movie1;
         this.movie2=movie2;
     }
