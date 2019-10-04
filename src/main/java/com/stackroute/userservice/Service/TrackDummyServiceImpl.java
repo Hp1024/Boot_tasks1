@@ -4,17 +4,15 @@ import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-@Primary
+
 @Service
-public class MovieServiceImpl implements MovieService {
+public class TrackDummyServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
-    public MovieServiceImpl(MovieRepository movieRepository) {
-        System.out.println("using original service implementation");
+    public TrackDummyServiceImpl(MovieRepository movieRepository) {
+        System.out.println("using dummy service implementation");
         this.movieRepository = movieRepository;
     }
 
@@ -28,7 +26,7 @@ public class MovieServiceImpl implements MovieService {
             throw new MovieAlreadyExistsException();
 
         }
-            return true;
+        return true;
     }
 
     @Override
@@ -48,19 +46,18 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public boolean updateMovie(Movie movie) {
-            movieRepository.save(movie);
-            return true;
+        movieRepository.save(movie);
+        return true;
     }
 
     @Override
     public List<Movie> findByName(String string) throws MovieNotFoundException{
-         List<Movie> result=movieRepository.findByTitle(string);
-         if(result.isEmpty()){
-             throw new MovieNotFoundException();
-         }
-         else return result;
+        List<Movie> result=movieRepository.findByTitle(string);
+        if(result.isEmpty()){
+            throw new MovieNotFoundException();
+        }
+        else return result;
 
     }
-
 
 }

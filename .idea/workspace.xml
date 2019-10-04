@@ -49,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserserviceApplication">
+  <component name="RunManager" selected="Maven.userservice [clean]">
     <configuration name="userservice [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -106,7 +106,7 @@
       <workItem from="1570078591473" duration="2427000" />
       <workItem from="1570081652700" duration="18417000" />
       <workItem from="1570161409813" duration="8984000" />
-      <workItem from="1570173546802" duration="268000" />
+      <workItem from="1570173546802" duration="642000" />
     </task>
     <servers />
   </component>
