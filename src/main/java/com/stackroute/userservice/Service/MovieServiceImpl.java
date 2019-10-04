@@ -1,5 +1,4 @@
 package com.stackroute.userservice.Service;
-
 import com.stackroute.userservice.Exceptions.MovieAlreadyExistsException;
 import com.stackroute.userservice.Exceptions.MovieNotFoundException;
 import com.stackroute.userservice.Model.Movie;
