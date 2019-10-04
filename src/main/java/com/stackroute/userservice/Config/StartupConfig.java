@@ -2,17 +2,14 @@ package com.stackroute.userservice.Config;
 
 import com.stackroute.userservice.LogicOnStartup.UsingApplicationListener;
 import com.stackroute.userservice.LogicOnStartup.UsingCommandLineRunner;
+import com.stackroute.userservice.Model.Movie;
 import com.stackroute.userservice.Service.MovieService;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
-import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -33,4 +30,16 @@ public class StartupConfig {
     public static PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
         return new PropertySourcesPlaceholderConfigurer();
     }
+
+    @Bean("movie1")
+    @ConfigurationProperties(prefix = "save")
+    public Movie movieBeanSave(){
+        return new Movie();
+    }
+    @Bean("movie2")
+    @ConfigurationProperties(prefix = "update")
+    public Movie movieBeanUpdate(){
+        return new Movie();
+    }
+
 }
