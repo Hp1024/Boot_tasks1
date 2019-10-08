@@ -18,10 +18,10 @@ public class UsingApplicationListener implements ApplicationListener<ContextRefr
         movie.setOriginal_title("Bangalore Days");
         movie.setOriginal_language("Malayalam");
         movie.setRelease_date("20-02-2014");
-        try {
-            movieService.saveMovie(movie);
-        } catch (MovieAlreadyExistsException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            movieService.saveMovie(movie);
+//        } catch (MovieAlreadyExistsException e) {
+//            e.printStackTrace();
+//        }
     }
 }

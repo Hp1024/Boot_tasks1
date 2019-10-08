@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
-@Profile("test")
+@Profile("prod")
 public class DummyServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
     public DummyServiceImpl(MovieRepository movieRepository) {
-        System.out.println("using DummyServiceImpl");
+        System.out.println("using DummyServiceImpl and mysql");
         this.movieRepository = movieRepository;
     }
 

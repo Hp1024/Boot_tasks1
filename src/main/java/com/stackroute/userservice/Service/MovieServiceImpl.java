@@ -14,7 +14,7 @@ public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     @Autowired
     public MovieServiceImpl(MovieRepository movieRepository) {
-        System.out.println("using MovieServiceImpl");
+        System.out.println("using MovieServiceImpl and h2");
         this.movieRepository = movieRepository;
     }
 

@@ -17,6 +17,6 @@ public class UsingCommandLineRunner implements CommandLineRunner {
         movie.setOriginal_title("Om Shanti Oshana");
         movie.setOriginal_language("Malayalam");
         movie.setRelease_date("15-06-2011");
-        movieService.saveMovie(movie);
+//        movieService.saveMovie(movie);
     }
 }
