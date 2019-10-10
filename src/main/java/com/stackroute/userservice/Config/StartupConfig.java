@@ -1,9 +1,8 @@
 package com.stackroute.userservice.Config;
-
 import com.stackroute.userservice.LogicOnStartup.UsingApplicationListener;
 import com.stackroute.userservice.LogicOnStartup.UsingCommandLineRunner;
 import com.stackroute.userservice.Model.Movie;
-import com.stackroute.userservice.Service.MovieService;
+import com.stackroute.userservice.Repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -15,15 +14,15 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @PropertySource("classpath:application.properties")
 public class StartupConfig {
     @Autowired
-    private MovieService movieService;
+    private MovieRepository movieRepository;
     @Bean
     public UsingApplicationListener applicationListener(){
-        UsingApplicationListener usingApplicationListener=new UsingApplicationListener(movieService);
+        UsingApplicationListener usingApplicationListener=new UsingApplicationListener(movieRepository);
         return usingApplicationListener;
     }
     @Bean
     public UsingCommandLineRunner commandLineRunner(){
-        UsingCommandLineRunner usingCommandLineRunner=new UsingCommandLineRunner(movieService);
+        UsingCommandLineRunner usingCommandLineRunner=new UsingCommandLineRunner(movieRepository);
         return usingCommandLineRunner;
     }
     @Bean

@@ -56,8 +56,8 @@
     </option>
   </component>
   <component name="RunManager" selected="Maven.userservice [clean]">
-    <configuration name="UserserviceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.stackroute.userservice.UserserviceApplication" />
+    <configuration name="MovieServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.stackroute.userservice.MovieServiceApplication" />
       <module name="userservice" />
       <extension name="coverage">
         <pattern>
@@ -179,7 +179,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Maven.userservice [clean]" />
-        <item itemvalue="Application.UserserviceApplication" />
+        <item itemvalue="Application.MovieServiceApplication" />
         <item itemvalue="Maven.userservice [compile]" />
         <item itemvalue="Maven.userservice [install:install]" />
         <item itemvalue="Maven.userservice [spring-boot:start]" />

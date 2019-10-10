@@ -6,7 +6,6 @@ import com.stackroute.userservice.Service.MovieService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -47,7 +46,7 @@ public class MovieController {
 
     @ApiOperation(value = "Update a movie")
     @PutMapping("movie")
-    public ResponseEntity<?> updateMovieController(){
+    public ResponseEntity<?> updateMovieController() throws MovieAlreadyExistsException {
             return new ResponseEntity<Boolean>(movieService.updateMovie(movie2),HttpStatus.ACCEPTED);
     }
     @ApiOperation(value = "Delete a movie")

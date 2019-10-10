@@ -9,6 +9,6 @@ public interface MovieService {
     public boolean saveMovie(Movie movie) throws MovieAlreadyExistsException;
     public List<Movie> getAllMovies();
     public boolean deleteMovie(long id) throws MovieNotFoundException;
-    public boolean updateMovie(Movie movie);
+    public boolean updateMovie(Movie movie) throws MovieAlreadyExistsException;
     public List<Movie> findByName(String string) throws MovieNotFoundException;
 }
